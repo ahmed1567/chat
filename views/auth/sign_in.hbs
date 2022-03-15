@@ -1,0 +1,20 @@
+<div class="container pt-5">
+    <div class="m-auto w-25">
+        <form action="/sign_in" method="POST" >
+            <label for="phone" class="form-label">Phone_Number:</label>
+            <input type="text" name="phone" id="phone" class="form-control my-2" placeholder="please enter your Phone number" required>
+            
+            <label for="password" class="form-label">password:</label>
+            <input type="password" name="password" id="password" class="form-control my-2" placeholder="please enter your Password" required>
+            
+            <input type="submit" value="sign_in" name="sign_in" class="btn btn-dark">
+           
+        </form>
+    </div>
+    {{#if exp}}
+        <div class="alert alert-dark m-auto w-25 mt-5" role="alert">
+            {{exp}}
+        </div>
+    {{/if}}
+
+</div>

@@ -1,0 +1,41 @@
+    <input type="text" id="from" value="{{from}}" class="w-75 d-none" />
+    <input type="text" id="to" value="{{to}}" class="w-75 d-none" />
+
+    <div class="d-flex justify-content-center">
+        <div class="box " id="Big-box"  >
+              <div class="input-group"  style="margin-left: 70px;">
+                <input type="text" id="userM" class="w-75" />
+                <button class="btn btn-outline-secondary" onclick="send()" id="send" type="button" >
+                  send
+                </button>
+              </div>
+              {{#each messages}}
+                 <div class="box1">{{this.content}}</div>
+              {{/each}}
+
+              
+
+
+        </div>
+
+    </div>
+    <script src="../../socket.io/socket.io.js"></script>
+    <script>
+        const socket = window.io();
+        var box=document.getElementById("Big-box");
+        function send(){
+            var message=document.getElementById('userM').value;
+            var from=document.getElementById("from").value;
+            var to=document.getElementById("to").value;
+            console.log(message);
+            console.log(from)
+            console.log(to);
+            var box=document.getElementById("Big-box");
+            socket.emit('user-message', { message:message,from:from,to:to })
+        }
+
+        socket.on('server-message', data => {
+                console.log(data.message);
+                 box.innerHTML += `<div class="box1">${data.message}</div>`
+             })
+    </script>

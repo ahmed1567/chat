@@ -1,0 +1,6 @@
+<ul class="list-group w-25 m-auto mt-5">
+  <li class="list-group-item active text-center fw-bold fs-5 text-dark" aria-current="true">All users</li>
+  {{#each users}}
+  <li class="list-group-item"><a href="/users/chat_box/?id={{this.user_id}}" class="text-decoration-none">{{this.Name}}</a></li>
+  {{/each}}
+</ul>
